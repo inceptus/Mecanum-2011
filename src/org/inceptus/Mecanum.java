@@ -46,6 +46,11 @@ public class Mecanum extends IterativeRobot {
 
     }
     
+    //When robot is started in autonomous
+    public void autonomousInit() {
+
+    }
+    
     //Called at the start of teleop
     public void teleopInit() {
         //Log initiation success
