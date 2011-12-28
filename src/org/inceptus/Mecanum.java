@@ -48,7 +48,8 @@ public class Mecanum extends IterativeRobot {
     
     //When robot is started in autonomous
     public void autonomousInit() {
-
+        //Log initiation success
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "Autonomous Initiated");
     }
     
     //Called at the start of teleop
