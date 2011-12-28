@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Watchdog;
 import edu.wpi.first.wpilibj.DriverStationLCD;
+import edu.wpi.first.wpilibj.RobotDrive;
 
 //Mecanum class. We are using IterativeRobot as SimpleRobot was not working.
 public class Mecanum extends IterativeRobot {
@@ -29,6 +30,9 @@ public class Mecanum extends IterativeRobot {
     Jaguar front_left = new Jaguar(1);
     Jaguar rear_right = new Jaguar(3);
     Jaguar rear_left = new Jaguar(4);
+    
+    //Setup RobotDrive
+    RobotDrive drive = new RobotDrive(front_left, rear_left, front_right, rear_right);
     
     //If using iOS controls
     boolean iOS = false;
