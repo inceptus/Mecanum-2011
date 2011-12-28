@@ -66,19 +66,29 @@ public class Mecanum extends IterativeRobot {
     
     //Periodically called during teleop
     public void teleopPeriodic() {
-        //Initiate the X,Y,Z vars to be set later
-        double X, Y, Z;
+        //Initiate the X and Y vars to be set later
+        double X, Y;
+        //Initiate the left and right booleans
+        boolean turn_right = false;
+        boolean turn_left = false;
         //Check if using iOS interface or not
         if(iOS){
             //Axis id's from http://comets.firstobjective.org/DSHelp.html
             X = joy1.getRawAxis(1);
             Y = joy1.getRawAxis(2);
-            Z = joy1.getRawAxis(3);
+            //Instead of buttons use joystick X axis
+            if(joy1.getRawAxis(3) > .5){
+                turn_left = true;
+            }else if(joy1.getRawAxis(3) < -.5){
+                turn_right = true;
+            }
         }else{
             //Standard controls
             X = joy1.getX();
             Y = joy1.getY();
-            Z = joy2.getY();
+            //Use real buttons
+            turn_left = joy1.getRawButton(4);
+            turn_right = joy1.getRawButton(5);
         }
         
     }
