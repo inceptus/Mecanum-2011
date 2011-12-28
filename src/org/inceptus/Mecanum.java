@@ -105,10 +105,13 @@ public class Mecanum extends IterativeRobot {
         if( Math.abs(Z) < .2 ){
             Z = 0;
         }
+        //Get the magnitude using the distance formula
         double magnitude = Math.sqrt((X*X)+(Y*Y));
+        //Normalize the value
         if( magnitude > 1 ){
             magnitude = 1;
         }
+        
     }
     
     //Routine to simplify driving the 4 motors
