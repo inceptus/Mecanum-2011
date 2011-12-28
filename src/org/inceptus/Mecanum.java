@@ -105,7 +105,10 @@ public class Mecanum extends IterativeRobot {
         if( Math.abs(Z) < .2 ){
             Z = 0;
         }
-        
+        double magnitude = Math.sqrt((X*X)+(Y*Y));
+        if( magnitude > 1 ){
+            magnitude = 1;
+        }
     }
     
     //Routine to simplify driving the 4 motors
