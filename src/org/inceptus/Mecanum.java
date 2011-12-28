@@ -30,6 +30,9 @@ public class Mecanum extends IterativeRobot {
     Jaguar rear_right = new Jaguar(3);
     Jaguar rear_left = new Jaguar(4);
     
+    //If using iOS controls
+    boolean iOS = false;
+    
     //When robot starts
     public void robotInit() {
         //Disable the Watchdog as it can cause issues with this version of java.
@@ -49,6 +52,8 @@ public class Mecanum extends IterativeRobot {
     
     //When robot is started in autonomous
     public void autonomousInit() {
+        //Set the iOS boolean to the opposite of digital input 1.
+        iOS = !(DriverStation.getInstance().getDigitalIn(1));
         //Log initiation success
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "Autonomous Initiated");
     }
