@@ -90,7 +90,31 @@ public class Mecanum extends IterativeRobot {
             turn_left = joy1.getRawButton(4);
             turn_right = joy1.getRawButton(5);
         }
-        
+        if(turn_right){
+            inceptusDrive(-1, -1, -1, -1, 1);
+        }else if(turn_left){
+            inceptusDrive(1, 1, 1, 1, 1);
+        }else{
+            //Standard mecanum eqations without rotation
+            double FL = (Y + X);
+            double FR = (Y - X);
+            double RL = (Y - X);
+            double RR = (Y + X);
+            //Setup max vlaue to be normalized
+            double max = Math.abs(FL);
+            if (Math.abs(FR)>max) max = Math.abs(FR);
+            if (Math.abs(RL)>max) max = Math.abs(RL);
+            if (Math.abs(RR)>max) max = Math.abs(RR);
+            //If the valuess need to be normalized
+            if (max>1){
+                FL/=max;
+                RL/=max;
+                FR/=max;
+                RR/=max;
+            }
+            
+            inceptusDrive(FL, RL, FR, RR, 1);
+        }
     }
     
     //Routine to simplify driving the 4 motors
