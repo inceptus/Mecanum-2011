@@ -21,16 +21,25 @@ import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 
 //Mecanum class. We are using IterativeRobot as SimpleRobot was not working.
 public class Mecanum extends IterativeRobot {
+    //Global Settings:
+    //PWN Positions
+    private static final int FRONT_LEFT_PWM = 1;
+    private static final int FRONT_RIGHT_PWM = 2;
+    private static final int REAR_LEFT_PWM = 4;
+    private static final int REAR_RIGHT_PWM = 3;
+    //Joystick Threshold
+    private static final double THRESHOLD = 0.2;
+    
     //Get the joysticks (keep joy* naming system so it can be adjusted later)
     Joystick joy1 = new Joystick(1);
     Joystick joy2 = new Joystick(2);
     Joystick joy3 = new Joystick(3);
     
     //Get the jaguars
-    Jaguar front_right = new Jaguar(2);
-    Jaguar front_left = new Jaguar(1);
-    Jaguar rear_right = new Jaguar(3);
-    Jaguar rear_left = new Jaguar(4);
+    Jaguar front_right = new Jaguar(FRONT_RIGHT_PWM);
+    Jaguar front_left = new Jaguar(FRONT_LEFT_PWM);
+    Jaguar rear_right = new Jaguar(REAR_RIGHT_PWM);
+    Jaguar rear_left = new Jaguar(REAR_LEFT_PWM);
     
     //Setup RobotDrive
     RobotDrive drive = new RobotDrive(front_left, rear_left, front_right, rear_right);
@@ -96,13 +105,13 @@ public class Mecanum extends IterativeRobot {
             Z = joy2.getX();
         }
         //Threshold
-        if( Math.abs(X) < .2 ){
+        if( Math.abs(X) < THRESHOLD ){
             X = 0;
         }
-        if( Math.abs(Y) < .2 ){
+        if( Math.abs(Y) < THRESHOLD ){
             Y = 0;
         }
-        if( Math.abs(Z) < .2 ){
+        if( Math.abs(Z) < THRESHOLD ){
             Z = 0;
         }
         //Get the magnitude using the distance formula
