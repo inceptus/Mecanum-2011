@@ -67,7 +67,7 @@ public class Mecanum extends IterativeRobot {
     //Periodically called during teleop
     public void teleopPeriodic() {
         //Initiate the X and Y vars to be set later
-        double X, Y;
+        double X, Y, sensitivity;
         //Initiate the left and right booleans
         boolean turn_right = false;
         boolean turn_left = false;
@@ -82,6 +82,8 @@ public class Mecanum extends IterativeRobot {
             }else if(joy1.getRawAxis(3) < -.5){
                 turn_right = true;
             }
+            //Make it 1 in iOS for now
+            sensitivity = 1;
         }else{
             //Standard controls
             X = joy1.getX();
@@ -89,11 +91,13 @@ public class Mecanum extends IterativeRobot {
             //Use real buttons
             turn_left = joy1.getRawButton(4);
             turn_right = joy1.getRawButton(5);
+            //Get sensitivity from Z axis and normalize ot be out of 100 - 0
+            sensitivity = (joy1.getZ()+100)/2;
         }
         if(turn_right){
-            inceptusDrive(-1, -1, -1, -1, 1);
+            inceptusDrive(-1, -1, -1, -1, sensitivity);
         }else if(turn_left){
-            inceptusDrive(1, 1, 1, 1, 1);
+            inceptusDrive(1, 1, 1, 1, sensitivity);
         }else{
             //Standard mecanum eqations without rotation
             double FL = (Y + X);
@@ -113,7 +117,7 @@ public class Mecanum extends IterativeRobot {
                 RR/=max;
             }
             
-            inceptusDrive(FL, RL, FR, RR, 1);
+            inceptusDrive(FL, RL, FR, RR, sensitivity);
         }
     }
     
