@@ -111,7 +111,8 @@ public class Mecanum extends IterativeRobot {
         if( magnitude > 1 ){
             magnitude = 1;
         }
-        
+        //Drive
+        drive.mecanumDrive_Polar(magnitude, joy1.getDirectionDegrees(), Z);
     }
     
     //Routine to simplify driving the 4 motors
