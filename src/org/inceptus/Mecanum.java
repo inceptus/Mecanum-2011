@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Watchdog;
+import edu.wpi.first.wpilibj.DriverStationLCD;
 
 //Mecanum class. We are using IterativeRobot as SimpleRobot was not working.
 public class Mecanum extends IterativeRobot {
@@ -35,7 +36,8 @@ public class Mecanum extends IterativeRobot {
     
     //Called at the start of teleop
     public void teleopInit() {
-        
+        //Log initiation success
+        DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "Teleop Initiated");
     }
     
     //Periodically called during teleop
