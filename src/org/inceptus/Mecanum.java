@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Watchdog;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 
 //Mecanum class. We are using IterativeRobot as SimpleRobot was not working.
 public class Mecanum extends IterativeRobot {
@@ -39,6 +40,11 @@ public class Mecanum extends IterativeRobot {
     
     //When robot starts
     public void robotInit() {
+        //Invert only the right side motors. Keep the left side normal.
+        drive.setInvertedMotor(MotorType.kFrontRight, true);
+        drive.setInvertedMotor(MotorType.kRearRight, true);
+        drive.setInvertedMotor(MotorType.kFrontLeft, false);
+        drive.setInvertedMotor(MotorType.kRearLeft, false);
         //Disable the Watchdog as it can cause issues with this version of java.
         Watchdog.getInstance().setEnabled(false);
     }
