@@ -81,17 +81,19 @@ public class Mecanum extends IterativeRobot {
     
     //Periodically called during teleop
     public void teleopPeriodic() {
-        //Initiate the X and Y vars to be set later
-        double X, Y;
+        //Initiate the X,Y,Z vars to be set later
+        double X, Y, Z;
         //Check if using iOS interface or not
         if(iOS){
             //Axis id's from http://comets.firstobjective.org/DSHelp.html
             X = joy1.getRawAxis(1);
             Y = joy1.getRawAxis(2);
+            Z = joy1.getRawAxis(3);
         }else{
             //Standard controls
             X = joy1.getX();
             Y = joy1.getY();
+            Z = joy2.getX();
         }
         //Threshold
         if( Math.abs(X) < .2 ){
@@ -99,6 +101,9 @@ public class Mecanum extends IterativeRobot {
         }
         if( Math.abs(Y) < .2 ){
             Y = 0;
+        }
+        if( Math.abs(Z) < .2 ){
+            Z = 0;
         }
         
     }
