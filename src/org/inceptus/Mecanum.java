@@ -97,8 +97,12 @@ public class Mecanum extends IterativeRobot {
             //Use real buttons
             turn_left = joy1.getRawButton(4);
             turn_right = joy1.getRawButton(5);
-            //Get sensitivity from Z axis and normalize ot be out of 100 - 0
-            sensitivity = (joy1.getZ()+100)/2;
+            //Get sensitivity from Z axis and normalize to be out of 1 - 0
+            sensitivity = (joy1.getZ()+1)/2;
+            //Make sure it's not at 0 where nothing happens. It could be confusing later
+            if(sensitivity < .3){
+                sensitivity = .3;
+            }
         }
         if(turn_right){
             inceptusDrive(-1, -1, -1, -1, sensitivity);
