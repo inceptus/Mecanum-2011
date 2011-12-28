@@ -66,7 +66,20 @@ public class Mecanum extends IterativeRobot {
     
     //Periodically called during teleop
     public void teleopPeriodic() {
-        
+        //Initiate the X,Y,Z vars to be set later
+        double X, Y, Z;
+        //Check if using iOS interface or not
+        if(iOS){
+            //Axis id's from http://comets.firstobjective.org/DSHelp.html
+            X = joy1.getRawAxis(2);
+            Y = joy1.getRawAxis(1);
+            Z = joy1.getRawAxis(3);
+        }else{
+            //Standard controls
+            X = joy1.getX();
+            Y = joy1.getY();
+            Z = joy2.getY();
+        }
     }
     
 }
