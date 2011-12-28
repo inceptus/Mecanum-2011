@@ -24,6 +24,12 @@ public class Mecanum extends IterativeRobot {
     Joystick joy2 = new Joystick(2);
     Joystick joy3 = new Joystick(3);
     
+    //Get the jaguars
+    Jaguar front_right = new Jaguar(2);
+    Jaguar front_left = new Jaguar(1);
+    Jaguar rear_right = new Jaguar(3);
+    Jaguar rear_left = new Jaguar(4);
+    
     //When robot starts
     public void robotInit() {
         
