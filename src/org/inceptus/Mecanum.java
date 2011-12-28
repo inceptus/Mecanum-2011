@@ -27,7 +27,12 @@ public class Mecanum extends IterativeRobot {
     public void autonomousPeriodic() {
 
     }
-
+    
+    //Called at the start of teleop
+    public void teleopInit() {
+        
+    }
+    
     //Periodically called during teleop
     public void teleopPeriodic() {
         
