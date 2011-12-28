@@ -42,10 +42,7 @@ public class Mecanum extends IterativeRobot {
     //When robot is disabled
     public void disabledInit() {
         //Stop the motors for safety
-        rear_left.set(0);
-        rear_right.set(0);
-        front_left.set(0);
-        front_right.set(0);
+        inceptusDrive(0,0,0,0,0);
         
         //Log disabled status
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "Disabled");
@@ -53,7 +50,7 @@ public class Mecanum extends IterativeRobot {
 
     //Periodically called during autonomous
     public void autonomousPeriodic() {
-
+        
     }
     
     //When robot is started in autonomous
