@@ -28,6 +28,11 @@ public class Mecanum extends IterativeRobot {
     public void robotInit() {
         
     }
+    
+    //When robot is disabled
+    public void disabled() {
+        
+    }
 
     //Periodically called during autonomous
     public void autonomousPeriodic() {
