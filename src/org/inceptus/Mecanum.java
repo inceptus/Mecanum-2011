@@ -36,7 +36,7 @@ public class Mecanum extends IterativeRobot {
     }
     
     //When robot is disabled
-    public void disabled() {
+    public void disabledInit() {
         //Log disabled status
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "Disabled");
     }
