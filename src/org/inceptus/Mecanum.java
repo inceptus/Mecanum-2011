@@ -104,6 +104,14 @@ public class Mecanum extends IterativeRobot {
                 sensitivity = .3;
             }
         }
+        //Threshold
+        if(Math.abs(X) < .2){
+            X = 0;
+        }
+        if(Math.abs(Y) < .2){
+            Y = 0;
+        }
+        //Check turn
         if(turn_right){
             inceptusDrive(-1, -1, -1, -1, sensitivity);
         }else if(turn_left){
