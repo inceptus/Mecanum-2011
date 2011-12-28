@@ -80,6 +80,16 @@ public class Mecanum extends IterativeRobot {
             Y = joy1.getY();
             Z = joy2.getY();
         }
+        
     }
     
+    //Routine to simplify driving the 4 motors
+    public void inceptusDrive(double FL, double RL, double FR, double RR, double sensitivity)
+    {
+        //Drive
+        front_left.set(FL * sensitivity);
+        rear_left.set(RL * sensitivity);
+        front_right.set(FR * sensitivity);
+        rear_right.set(RR * sensitivity);
+    }
 }
