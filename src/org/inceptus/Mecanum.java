@@ -18,6 +18,11 @@ import edu.wpi.first.wpilibj.Watchdog;
 
 //Mecanum class. We are using IterativeRobot as SimpleRobot was not working.
 public class Mecanum extends IterativeRobot {
+    //Get the joysticks (keep joy* naming system so it can be adjusted later)
+    Joystick joy1 = new Joystick(1);
+    Joystick joy2 = new Joystick(2);
+    Joystick joy3 = new Joystick(3);
+    
     //When robot starts
     public void robotInit() {
         
