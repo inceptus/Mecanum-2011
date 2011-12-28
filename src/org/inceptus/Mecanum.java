@@ -32,7 +32,8 @@ public class Mecanum extends IterativeRobot {
     
     //When robot starts
     public void robotInit() {
-        
+        //Disable the Watchdog as it can cause issues with this version of java.
+        Watchdog.getInstance().setEnabled(false);
     }
     
     //When robot is disabled
