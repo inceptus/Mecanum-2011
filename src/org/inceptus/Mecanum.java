@@ -43,7 +43,6 @@ public class Mecanum extends IterativeRobot {
     public void disabledInit() {
         //Stop the motors for safety
         inceptusDrive(0,0,0,0,0);
-        
         //Log disabled status
         DriverStationLCD.getInstance().println(DriverStationLCD.Line.kUser2, 1, "Disabled");
     }
@@ -80,9 +79,9 @@ public class Mecanum extends IterativeRobot {
             X = joy1.getRawAxis(1);
             Y = joy1.getRawAxis(2);
             //Instead of buttons use joystick X axis
-            if(joy1.getRawAxis(3) > .5){
+            if( joy1.getRawAxis(3) > .5 ){
                 turn_left = true;
-            }else if(joy1.getRawAxis(3) < -.5){
+            }else if( joy1.getRawAxis(3) < -.5 ){
                 turn_right = true;
             }
             //Make it 1 in iOS for now
@@ -95,24 +94,24 @@ public class Mecanum extends IterativeRobot {
             turn_left = joy1.getRawButton(4);
             turn_right = joy1.getRawButton(5);
             //Get sensitivity from Z axis and normalize to be out of 1 - 0
-            sensitivity = (joy1.getZ()+1)/2;
+            sensitivity = ( ( joy1.getZ() + 1 ) / 2 );
             //Make sure it's not at 0 where nothing happens. It could be confusing later
-            if(sensitivity < .3){
+            if( sensitivity < .3 ){
                 sensitivity = .3;
             }
         }
         //Threshold
-        if(Math.abs(X) < .2){
+        if( Math.abs(X) < .2 ){
             X = 0;
         }
-        if(Math.abs(Y) < .2){
+        if( Math.abs(Y) < .2 ){
             Y = 0;
         }
         //Check turn
-        if(turn_right){
-            inceptusDrive(-1, -1, -1, -1, sensitivity);
-        }else if(turn_left){
-            inceptusDrive(1, 1, 1, 1, sensitivity);
+        if( turn_right ){
+            inceptusDrive( -1, -1, -1, -1, sensitivity );
+        }else if( turn_left ){
+            inceptusDrive( 1, 1, 1, 1, sensitivity );
         }else{
             //Standard mecanum eqations without rotation
             double FL = (Y + X);
@@ -121,11 +120,11 @@ public class Mecanum extends IterativeRobot {
             double RR = (Y + X);
             //Setup max vlaue to be normalized
             double max = Math.abs(FL);
-            if (Math.abs(FR)>max) max = Math.abs(FR);
-            if (Math.abs(RL)>max) max = Math.abs(RL);
-            if (Math.abs(RR)>max) max = Math.abs(RR);
-            //If the valuess need to be normalized
-            if (max>1){
+            if( Math.abs(FR) > max ){ max = Math.abs(FR); }
+            if( Math.abs(RL) > max ){ max = Math.abs(RL); }
+            if( Math.abs(RR) > max ){ max = Math.abs(RR); }
+            //If the values need to be normalized
+            if (max > 1){
                 FL/=max;
                 RL/=max;
                 FR/=max;
