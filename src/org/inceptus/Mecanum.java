@@ -73,6 +73,8 @@ public class Mecanum extends IterativeRobot {
         //Initiate the left and right booleans
         boolean turn_right = false;
         boolean turn_left = false;
+        //Fire the basketball boolean
+        boolean fire = false;
         //Check if using iOS interface or not
         if(iOS){
             //Axis id's from http://comets.firstobjective.org/DSHelp.html
@@ -84,6 +86,8 @@ public class Mecanum extends IterativeRobot {
             }else if( joy1.getRawAxis(3) < -.5 ){
                 turn_right = true;
             }
+            //Set fire to be the fire button on iOS
+            fire = joy1.getRawButton(1);
             //Make it 1 in iOS for now
             sensitivity = 1;
         }else{
@@ -93,6 +97,8 @@ public class Mecanum extends IterativeRobot {
             //Use real buttons
             turn_left = joy1.getRawButton(4);
             turn_right = joy1.getRawButton(5);
+            //Set fire to be the tirgger button
+            fire = joy1.getRawButton(1);
             //Get sensitivity from Z axis and normalize to be out of 1 - 0
             sensitivity = ( ( joy1.getZ() + 1 ) / 2 );
             //Make sure it's not at 0 where nothing happens. It could be confusing later
@@ -132,6 +138,12 @@ public class Mecanum extends IterativeRobot {
             }
             
             inceptusDrive(FL, RL, FR, RR, sensitivity);
+        }
+        //Fire code
+        if(fire){
+            //Fire
+        }else{
+            //Reload
         }
     }
     
